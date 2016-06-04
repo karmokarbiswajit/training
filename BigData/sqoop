@@ -1,3 +1,16 @@
+----
+NOTES
+options-file
+import
+--connect
+"jdbc:mysql://localhost:3306/retail_db"
+--username
+root
+--password
+cloudera
+
+----
+
 list db
 sqoop list-databases --connect "jdbc:mysql://localhost:3306" --username edureka --password edureka
 --driver not required in this syntax
@@ -13,6 +26,9 @@ sqoop import --connect "jdbc:mysql://localhost:3306/edurekadb"
 --driver com.mysql.jdbc.Driver 
 --username edureka --password edureka 
 --table state --target-dir '/user/output/task3' -m1
+
+sqoop --options-file /home/cloudera/training/sqoop_s_mysql_conn.txt --table order_items --target-dir /user/root/output/order_items --fields-terminated-by ,
+
 
 ------------copy subset of mysql data to HDFS dir------------
 sqoop import --connect "jdbc:mysql://localhost:3306/edurekadb" 
