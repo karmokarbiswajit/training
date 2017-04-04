@@ -81,6 +81,21 @@ sqoop import \
   --hive-overwrite \
   --hive-table retail_db.departments \
   --outdir java_files
+  
+  ----------------import data into hive by creating hive table
+  
+  sqoop import \
+  --connect "jdbc:mysql://quickstart.cloudera:3306/retail_db" \
+  --username=retail_dba \
+  --password=cloudera \
+  --table departments \
+  --fields-terminated-by '|' \
+  --lines-terminated-by '\n' \
+  --hive-home /user/hive/warehouse \
+  --hive-import \
+  --hive-table departments_test \
+  --create-hive-table \
+  --outdir java_files
 
 -------------export to mysql from HDFS----------------------
 sqoop export --connect "jdbc:mysql://localhost:3306/edurekadb" --driver com.mysql.jdbc.Driver --username edureka --password edureka --table state --export-dir '/user/output/task3'
