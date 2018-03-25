@@ -1,0 +1,18 @@
+set -o vi
+hostname -f
+
+ssh cloudera@192.168.1.14 -p22
+
+copy file from local to vm
+scp -p22 test.rtf cloudera@192.168.1.12:/home/cloudera/training
+
+after upgrading to cloudera express run the below
+sudo su - hdfs
+hadoop fs -chmod -R 777 /user/spark
+
+
+
+sudo -u hdfs hadoop fs -mkdir /user/cloudera/input_files
+hadoop fs -ls /user/cloudera/input_files
+sudo -u hdfs hadoop fs -put /home/cloudera/Downloads/Input/DelayedFlights.csv /user/cloudera/input_files
+hadoop fs -cat /user/cloudera/input_files/DelayedFlights.csv | wc -l
