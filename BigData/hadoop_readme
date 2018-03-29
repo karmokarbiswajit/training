@@ -1,10 +1,13 @@
+Local Location
+/Volumes/BiswajitData/Dropbox/Training
+
 set -o vi
 hostname -f
 
 ssh cloudera@192.168.1.14 -p22
 
-copy file from local to vm
-scp -p22 test.rtf cloudera@192.168.1.12:/home/cloudera/training
+copy file from local to vm (get ip address from eth1)
+scp -p22 crime.json cloudera@10.0.2.15:/home/cloudera/files
 
 sudo service hadoop-yarn-nodemanager status
 sudo service hadoop-yarn-resourcemanager status
