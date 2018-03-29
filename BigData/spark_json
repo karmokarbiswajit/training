@@ -1,0 +1,23 @@
+import org.apache.spark.sql.SparkSession
+
+val spark = SparkSession
+  .builder()
+  .appName("Spark Example JSON")
+  .getOrCreate()
+
+// For implicit conversions like converting RDDs to DataFrames
+import spark.implicits._
+
+val datadf = spark.read.json("/user/cloudera/input_files/stocks.json")
+
+datadf.show(5)
+
+datadf.printSchema()
+
+### TEMPORARY VIEW ###
+datadf.createOrReplaceTempView("stocks")
+val sqldatadf = spark.sql("select distinct ticker from stocks limit 5").show()
+
+### GLOBAL TEMPORARY VIEW ###
+datadf.createGlobalTempView("stocks_g")
+val sqldatadf = spark.sql("select * from global_temp.stocks_g where ticker = 'FB' limit 5").show()
