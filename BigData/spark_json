@@ -8,7 +8,11 @@ val spark = SparkSession
 // For implicit conversions like converting RDDs to DataFrames
 import spark.implicits._
 
+JSON
 val datadf = spark.read.json("/user/cloudera/input_files/stocks.json")
+
+CSV
+val stockdf = spark.read.format("csv").option("sep",",").option("inferSchema","true").option("header","true").load("/user/cloudera/input_files/stocks.csv")
 
 datadf.show(5)
 
