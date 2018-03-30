@@ -18,6 +18,8 @@ datadf.show(5)
 
 datadf.printSchema()
 
+stockdf.groupBy("ticker").count().show()
+
 ### TEMPORARY VIEW ###
 datadf.createOrReplaceTempView("stocks")
 val sqldatadf = spark.sql("select distinct ticker from stocks limit 5").show()
