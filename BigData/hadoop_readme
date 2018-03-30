@@ -4,10 +4,10 @@ Local Location
 set -o vi
 hostname -f
 
-ssh cloudera@192.168.1.14 -p22
+ssh cloudera@10.0.0.5 -p22
 
 copy file from local to vm (get ip address from eth1)
-scp -p22 crime.json cloudera@10.0.2.15:/home/cloudera/files
+scp -p22 crime.json cloudera@10.0.0.5:/home/cloudera/files
 
 sudo service hadoop-yarn-nodemanager status
 sudo service hadoop-yarn-resourcemanager status
