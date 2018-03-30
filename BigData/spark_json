@@ -20,6 +20,11 @@ datadf.printSchema()
 
 stockdf.groupBy("ticker").count().show()
 
+###filter or where can be used
+
+stockdf.filter(($"ticker" isin ("APPL")) && ($"date" isin ("3/29/18"))).show()
+stockdf.filter(($"ticker" isin ("APPL")) || ($"date" isin ("3/29/18"))).show()
+
 ### TEMPORARY VIEW ###
 datadf.createOrReplaceTempView("stocks")
 val sqldatadf = spark.sql("select distinct ticker from stocks limit 5").show()
