@@ -22,6 +22,7 @@ hadoop fs -tail /user/output/part
 hadoop fs -rm -r /user/cloudera/sqoop_import
 
 sudo -u hdfs hadoop fs -chmod 777 /user/cloudera/input_files
+hadoop fs -rm -r folder_name
 
 Get file size
 dfs -du -s -h
