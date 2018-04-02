@@ -17,6 +17,9 @@ val stockdf = spark.read.format("csv").option("sep",",").option("inferSchema","t
 SAVING IN SPECIFIED FORMAT
 stockdf.select("ticker","date","close","volume","open","high","low").write.format("parquet").save("/user/cloudera/input_files/stocks.parquet")
 
+SAVING IN SPECIFIED FORMAT WITH PARTITIONING
+stockdf.select("ticker","date","close","volume","open","high","low").write.partitionBy("ticker").format("parquet").save("/user/cloudera/input_files/stocks.parquet")
+
 datadf.show(5)
 
 datadf.printSchema()
