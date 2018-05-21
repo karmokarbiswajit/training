@@ -27,6 +27,9 @@ hadoop fs -rm -r folder_name
 Get file size
 dfs -du -s -h
 
+Get size of all files in a folder
+du -sh .
+
 view /etc/hadoop/conf/core-site.xml
 
 hive> dfs -du -s -h user/hive/warehouse/tablename ---gives size
